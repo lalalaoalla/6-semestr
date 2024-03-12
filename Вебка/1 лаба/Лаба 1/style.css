@@ -1,0 +1,20 @@
+.header {
+    display:grid;
+    grid-template-columns: minmax(400,500);
+    background-color:aquamarine;
+    
+    text-align: center;
+    color:brown;
+}
+img {
+    border-radius: 25px;
+    /*padding: 100px;
+    border: 50px solid yellowgreen;*/
+}
+.navbar {
+    background-color: 2d2d2d;
+
+}
+.navbar-brand {
+    font-style: italic;
+}

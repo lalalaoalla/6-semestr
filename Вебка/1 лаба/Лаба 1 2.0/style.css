@@ -1,0 +1,30 @@
+/* Так катя запомни пока что у тебя 12 ячеек!!!!!!!!!!!!!!*/
+.content {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 1fr 6fr 0.75fr;
+}
+.header {
+    background-color: aliceblue;
+    grid-column-start: 1;
+    grid-column-end:  span 2;
+}
+.menu {
+    background-color: beige;
+    width: 300px;
+}
+.content3 {
+    background-color: white;
+    width: 1000px;
+}
+.footer {
+    background-color: lightgrey;
+    grid-column-start: 1;
+    grid-column-end:  span 2;
+}
+.content-grid {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+    background-color: aqua;
+}
