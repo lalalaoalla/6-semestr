@@ -1,0 +1,12 @@
+int main()
+{
+
+    a=5343;
+/*
+abcdifgh
+*/
+    return 0;
+//qwerty
+    b++;
+
+}
