@@ -1,0 +1,76 @@
+html, body, main{
+    height: 100%;
+}
+.body{
+    --background-primary: #fafafa;
+    --background-secondary:  #2d2d2d;
+    --font-color-primary: #000000; 
+    --font-color-secondary: #2d2d2d;
+    font-family: 'Montserrat', sans-serif;
+    color:var(--font-color-primary) ;
+    background:var(--background-primary);
+}
+
+.navbar-logo{
+    position: relative;
+}
+.navbar-text{
+    color: var(--font-color-primary);
+    position: absolute; 
+    top: 29px; 
+    left: 48px
+}
+.card-main{
+    width: 80%; 
+    height: auto; 
+    position: relative; 
+    display: inline-block;
+}
+
+.card-main-body{
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+}
+.card-main-theme{
+    position: absolute; 
+    bottom: 7%; 
+    left: 17%; 
+    color: white; 
+    font-size: 2vw;
+}
+.card-main-title{
+    position: absolute; 
+    bottom: 2%; 
+    left: 17%; 
+    color: whitesmoke; 
+    font-size: 1.5vw;
+}
+
+.card-body{
+    height: 280px;
+    overflow: hidden;
+}
+
+.info-img{
+    height: 80%;
+}
+.img{
+    width: 45rem; 
+    border-radius: 10px;
+}
+.date{
+    margin-right: 20%;
+}
+.text{
+    white-space: pre-line;
+}
+.form{
+    margin-top: 100px;
+}
+
+.textarea{
+    height: 200px;
+}
