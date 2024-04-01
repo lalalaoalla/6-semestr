@@ -1,0 +1,93 @@
+domains
+num, price, day, mounth, year = integer
+city_name, time1,time2,flytype = symbol
+time=time(time1,time2)
+date=date(day,mounth,year)
+
+database
+nondeterm flight(num,city_name,city_name,flytype,time,date,price)
+
+predicates
+nondeterm day_connect(city_name,city_name,time,date,price)
+
+
+nondeterm menu()
+nondeterm call(integer)
+nondeterm repeat
+nondeterm stop(integer)
+
+clauses
+
+day_connect(City1,City2,time(Time1, Time2),date(Day,Mounth,Year), Price):- flight(_, City1, City2,_,time(Time1,Time2),date(Day,Mounth,Year),Price).
+day_connect(City1,City2,time(Time1, Time4), date(Day,Mounth,Year), Price):- flight(_, City1, City3,_,time(Time1,Time2),date(Day,Mounth,Year),
+Price1), day_connect(City3,City2,time(Time3,Time4),date(Day,Mounth,Year) , Price2),Time3>Time2,Price=Price1+Price2, write(City3), write(" "), write(Time2), 
+write(" "), write(Time3).
+
+
+
+call(0):- stop(_).
+call(1):- write("Enter the flight number: "), readint(Number),nl,
+	write("Enter the point of departure: "), readln(From),nl,
+	write("Enter your destination: "), readln(In),nl,
+	write("Enter the flytype: "), readln(Flytype),nl,
+	write("Enter the departure time: "), readln(Time1),nl,
+	write("Enter the arrival time: "), readln(Time2),nl,
+	write("Enter the day of departure: "), readint(Day),nl,
+	write("Enter the month of departure: "), readint(Month),nl,
+	write("Enter the year of departure: "), readint(Year),nl,
+	write("Enter the price: "), readint(Price),nl,
+	assert(flight(Number,From,In,Flytype,time(Time1,Time2),date(Day,Month, Year),Price)),
+	fail.
+call(2):- write("Enter the flight number: "), readint(Number),nl,
+	retract(flight(Number,_,_,_,_,_,_)),
+	write("Succesfull"),nl,
+	fail.
+call(3):- consult("C:\\Files\\input2.txt"),
+	write("Downloaded from a file").
+call(4):- save("C:\\Files\\output2.txt"),
+	write("Saved to a file").
+call(5):- write("Enter the point of departure: "), readln(From),nl,
+	write("Enter your destination: "), readln(In),nl,
+	write("Enter the day of departure: "), readint(Day),nl,
+	write("Enter the month of departure: "), readint(Month),nl,
+	write("Enter the year of departure: "), readint(Year),nl,
+	day_connect(From,In,time(Time1,Time2),date(Day,Month,Year),Price),
+	write("You can fly from"," ",From," ", "to"," ",In," ","the"," ",Day," ",Month," ",Year,"."," ","Departure time:", Time1,","," ",
+	"arrival time at the destination"," ",Time2,"."," ","Ticket price:"," ",Price).
+call(6):- write("Enter the point of departure: "), readln(From),nl,
+	write("Enter your destination: "), readln(In),nl,
+	write("Enter the day of departure: "), readint(Day),nl,
+	write("Enter the month of departure: "), readint(Month),nl,
+	write("Enter the year of departure: "), readint(Year),nl,
+	write("Enter how much money you have: "), readint(Price),nl,
+	day_connect(From,In,time(Time1,Time2),date(Day,Month,Year),Min_Price),
+	Min_price<=Price,
+	write("You can fly from"," ",From," ", "to"," ",In," ","the"," ",Day," ",Month," ",Year,"."," ","Departure time:", Time1,","," ",
+	"arrival time at the destination"," ",Time2,"."," ","Ticket price:"," ",Min_Price).
+call(7):-flight(Number,From,In,Flytype,time(Time1,Time2),date(Day,Month, Year),Price),
+	write(Number," ",From," ",In," ",Flytype," ",Time1," ",Time2," ",Day," ",Month," ", Year," ",Price).
+
+repeat.
+repeat:- repeat.
+
+stop(0).
+stop(_):- fail.
+
+menu():-repeat,
+	nl, write("Choose operation:"),
+	nl, write("1) Add flight"),
+	nl, write("2) Delete flight"),
+	nl, write("3) Load databaze"),
+	nl, write("4) Save databaze"),
+	nl, write("5) How can I get there .."),
+	nl, write("6) I have a certain amount of money.."),
+	nl, write("7) Show flight list"),
+	nl, write("0) Exit"),	
+	nl, write("Enter choice:"),	
+	readint(Choice), nl,
+	call(Choice),
+	readln(_),
+	stop(Choice).
+    
+goal
+menu.
